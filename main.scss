@@ -332,7 +332,35 @@ $direction: "right";
 
         // لو الاتجاه مش صحيح - نعمل error او الشخص كتب حاجة مش مالوفة
         @else {
-            @error "this #{$direction} not successfully" // رسالة خطأ مع قيمة المتغير
+            @error "this #{$direction} not successfully"; // رسالة خطأ مع قيمة المتغير
         }
     }
+}
+
+
+
+// ========================================
+// أمثلة على استخدام Interpolation في SASS
+// ========================================
+
+// Interpolation يعني إدخال قيم المتغيرات داخل النصوص أو أسماء الكلاسات
+// ده مفيد عشان نعمل أسماء كلاسات ديناميكية أو نستخدم متغيرات في أماكن مختلفة
+
+// متغيرات عشان نستخدمها في Interpolation
+$company: "falcon"; // اسم الشركة
+$position: "right"; // موضع العنصر
+
+// كلاس ديناميكي باستخدام Interpolation
+// #{$company} هيحط قيمة المتغير "falcon" في اسم الكلاس
+// unique-id() هيعمل ID فريد لكل مرة يتم فيها compile الكود
+.ad-#{$company}-#{unique-id()} {
+    font-size: 20px; // حجم الخط
+    background-image: url("imgs/#{$company}.png"); // صورة خلفية باستخدام اسم الشركة
+    #{$position}: 0; // موضع العنصر باستخدام متغير
+}
+
+// كلاس آخر باستخدام unique-id() فقط
+// unique-id() بيضمن إن كل كلاس له اسم فريد
+.ad-#{unique-id()} {
+    font-weight: bold; // خط عريض
 }

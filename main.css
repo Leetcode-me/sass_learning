@@ -118,4 +118,14 @@ body {
   top: 50%;
   transform: translateY(-50%);
   border-left-color: red;
+}
+
+.ad-falcon-uq6x26t {
+  font-size: 20px;
+  background-image: url("imgs/falcon.png");
+  right: 0;
+}
+
+.ad-uq6x26z {
+  font-weight: bold;
 }/*# sourceMappingURL=main.css.map */
