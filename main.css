@@ -59,4 +59,63 @@ body {
 }
 .parent + p {
   font-size: 15px;
+}
+
+.sro {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.arrow-div, .product, .show {
+  margin: 0 auto;
+  width: 50%;
+  background-color: #000;
+  color: #fff;
+}
+
+.show, .product {
+  padding: 20px;
+  font-size: larger;
+}
+
+.product {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.page {
+  background-color: #fff;
+}
+
+.box {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+.arrow-div, .show, .product {
+  margin: 0 auto;
+  width: 50%;
+  background-color: #000;
+  color: #fff;
+}
+
+.arrow-div {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 50px auto;
+}
+.arrow-div::before {
+  content: "";
+  position: absolute;
+  border: 20px solid transparent;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: red;
 }/*# sourceMappingURL=main.css.map */
