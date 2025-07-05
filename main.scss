@@ -1,0 +1,46 @@
+// import layout file
+@use "./sass/layout/leyout-page";
+
+// import count file
+@use "./sass/pages/count-page";
+@use "./sass/variables/color" as *;
+
+// variables
+
+// local variables
+$alt-color: #fff;
+
+.count {
+    background-color: var($alt-color);
+}
+
+// global variables
+body {
+    // $alt-color: #000; // لو عايز اخلي الون دة جلوبل بكتب جنرو !global
+    $alt-color: #000 !global; // لو عايز اخلي الون دة جلوبل بكتب جنرو !global
+    background-color: var($alt-color);
+}
+
+.count {
+    background-color: var($alt-color); // كدة هوا اخد الون بتاع الجلوبل لان انا كتبت جنبو جلوبل
+}
+
+// import variables
+
+// لازم عشان يقرا قيم الفاريبول بكتب جنبها as *
+// او بنزل تحت جنب الفاريبول وبكتب اسم الفيل
+// @use "./sass/variables/color" as *;
+
+.sidbar{
+    background-color: $main;
+    color: $alt;
+}
+
+
+$min_width: "min-width: 768px";
+@media ($min-width) {
+    .sidbar{
+        background-color: $main;
+        color: $alt;
+    }
+}
