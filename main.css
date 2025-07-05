@@ -34,4 +34,29 @@ body {
     background-color: yellow;
     color: violet;
   }
+}
+.box {
+  background-color: #000;
+  color: #fff;
+}
+.box .row {
+  padding: 20px;
+}
+.box .child .inv {
+  background-color: #000;
+  color: #fff;
+}
+.box .child .foll {
+  background-color: #fff;
+  color: #000;
+}
+
+.parent > .child {
+  font-size: 20px;
+}
+.parent .test {
+  font-weight: bold;
+}
+.parent + p {
+  font-size: 15px;
 }/*# sourceMappingURL=main.css.map */
