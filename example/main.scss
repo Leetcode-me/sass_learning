@@ -1,0 +1,267 @@
+// ===============================
+// مثال 2: شرح العلاقات بين العناصر واستخدام الـ nesting
+// ===============================
+// هذا المثال يوضح كيفية استخدام الـ nesting في SASS لتنسيق العناصر الداخلية
+.content {
+    >.box {
+        padding: 15px;
+
+        >.title {
+            font-size: 18px;
+        }
+    }
+
+    .cat {
+        padding: 15px;
+    }
+
+    &.premium:before {
+        content: "Premium Box";
+    }
+
+    &.premium:hover {
+        background-color: #eee;
+    }
+}
+
+// ===============================
+// مثال 2: إخراج نفس الـ Output بثلاث طرق مختلفة
+// ===============================
+// الهدف: كتابة SASS يخرج الكود التالي بثلاث طرق مختلفة
+// .class > .child { padding: 10px; }
+
+// الطريقة الأولى: استخدام nesting مع >
+.class> {
+    .child {
+        padding: 10px;
+    }
+}
+
+// الطريقة الثانية: nesting داخل الكلاس مع >
+.class {
+    >.child {
+        padding: 10px;
+    }
+}
+
+// الطريقة الثالثة: استخدام & مع >
+.class {
+    &>.child {
+        padding: 10px;
+    }
+}
+
+// ===============================
+// مثال 3: استخدام placeholder selectors و interpolation
+// ===============================
+// الهدف: إخراج كود CSS باستخدام %placeholder و @extend و interpolation
+$font-weight: "bold";
+$font-size: 20px;
+
+%class {
+    font-weight: $font-weight;
+    font-size: $font-size;
+}
+
+$name-class: "class";
+
+// استخدام interpolation لإنشاء كلاس ديناميكي
+.#{$name-class} {
+    @extend %class;
+}
+
+// ===============================
+// مثال على استخدام sibling selectors
+// ===============================
+// يوضح كيفية تنسيق العناصر المجاورة باستخدام &+ و &~
+.parent {
+    &+.sibling {
+        margin: auto {
+            top: 10px;
+        }
+
+        &~.last {
+            padding: 10px;
+        }
+    }
+}
+
+// ===============================
+// التكليف 05: Grouping تلقائي باستخدام @extend
+// ===============================
+// الهدف: تجميع الكلاسات المشتركة في التنسيقات تلقائياً باستخدام %placeholders و @extend
+
+// تعريف بلوكات أنماط قابلة لإعادة الاستخدام
+%white-box {
+    background-color: white;
+    padding: 20px;
+}
+
+%border-style {
+    border: 1px solid #CCC;
+}
+
+// استخدام الـ placeholders في الكلاسات
+.widget {
+    @extend %white-box;
+}
+
+.main-border {
+    @extend %border-style;
+}
+
+.my-class {
+    @extend %white-box;
+    @extend %border-style;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+// ===============================
+// التكليف 07: Grouping مع media queries
+// ===============================
+// الهدف: تجميع العناصر داخل media query واستخدام nesting
+.box {
+
+    h2,
+    p {
+        font-size: 20px;
+    }
+}
+
+$max-width: "max-width: 575px";
+
+@media ($max_width) {
+    .box {
+
+        h2,
+        p {
+            font-size: 16px;
+        }
+    }
+
+    .box {
+
+        h2 span,
+        p span {
+            font-weight: bold;
+        }
+    }
+}
+
+// ===============================
+// التكليف 08: استخدام المتغيرات في الألوان
+// ===============================
+// الهدف: استخدام متغيرات الألوان وعدم تعديل قيمها مباشرة
+// $red: #e91e63;
+// $green: #009688;
+// $link-color: $green;
+// $link-hover: $red;
+// .box a { color: $link-color; &:hover { color: $link-hover; } }
+// الناتج: لون الرابط الأساسي والألوان عند التحويم
+
+// ===============================
+// التكليف 09: استدعاء الملفات في الملف الرئيسي
+// ===============================
+// الهدف: استدعاء ملفات SASS بشكل صحيح في المشروع
+// @use "./Helpers/functions" as *;
+// @use "./Helpers/vars" as *;
+// @use "./Layout/header" as *;
+// @use "./Layout/footer" as *;
+
+// ===============================
+// التكليف 10: استخدام الـ nesting في الأسماء المركبة
+// ===============================
+// الهدف: كتابة كود SASS يخرج نفس النتيجة باستخدام nesting للأسماء المركبة
+.box {
+    font-size: 20px;
+
+    &-holder {
+        width: 1000px;
+
+        &-content {
+            margin: auto;
+        }
+    }
+}
+
+// ===============================
+// مثال عملي: استخدام المتغيرات، Interpolation، و @if
+// ===============================
+// تعريف متغيرات رئيسية للأسماء والمسافات واللغة
+$main: "school";
+$child: "box";
+$language: "en"; // English
+$gap: 20px;
+
+// كلاس ديناميكي باسم المتغير $main
+// يحدد اتجاه الصفحة حسب اللغة، ويضيف مسافة padding و margin
+// يستخدم Interpolation و Nested Selectors
+.#{$main} {
+    padding: $gap;
+
+    // شرط لتحديد اتجاه الصفحة بناءً على اللغة
+    @if $language =="en" {
+        direction: ltr;
+    }
+
+    @else if $language =="ar" {
+        direction: rtl;
+    }
+
+    margin-left: $gap;
+
+    // كلاس فرعي ديناميكي باسم main-child
+    & &-#{$child} {
+        padding: $gap;
+    }
+
+    // عند التحويم على العنصر الرئيسي، غيّر خلفية العنصر الفرعي
+    &:hover &-#{$child} {
+        background-color: #eee;
+    }
+}
+
+// ===============================
+// مثال: استخدام Interpolation في تعليقات SASS Output
+// ===============================
+// الهدف: إخراج تعليقات توضح ألوان الثيم في CSS النهائي
+$main-color: red;
+$alt-color: blue;
+
+/*! Theme Version: 1.0 */
+/*! Website Theme Main Color Is: #{$main-color} */
+/*! Website Theme Alternate Color Is: #{$alt-color} */
+
+// ===============================
+// مثال: استخدام الشروط المتداخلة مع الأرقام
+// ===============================
+// الهدف: تغيير لون العنصر بناءً على قيمة المتغير $number
+// (الكود المطلوب في التعليق فقط، لم يتم تفعيله هنا)
+// $number: 10;
+// $number: 8;
+// $number: 5;
+// .class {
+//     @if $number >8 {
+//         color: blue;
+//     } @else if $number >5 {
+//         color: green;
+//     }@else if $number >3 {
+//         color: red;
+//     }@else{
+//         @error "this #{$number} not successfully";
+//     }
+// }
+
+// ===============================
+// مثال: استخدام دالة if() في SASS
+// ===============================
+// الهدف: تعيين لون العنصر بناءً على شرط بسيط باستخدام if()
+$number: 10;
+$color: red;
+$theme: light;
+
+// إذا كان $number > 5، استخدم $color، وإلا استخدم $theme
+.class {
+    color: if($number > 5, $color, $theme );
+}

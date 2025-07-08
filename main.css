@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -102,9 +103,15 @@ body {
 
 .arrow-div {
   font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 300px;
   height: 300px;
   position: relative;
@@ -116,16 +123,17 @@ body {
   border: 20px solid transparent;
   right: -40px;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   border-left-color: red;
 }
 
-.ad-falcon-uq6x26t {
+.ad-falcon-u5sl4a3 {
   font-size: 20px;
   background-image: url("imgs/falcon.png");
   right: 0;
 }
 
-.ad-uq6x26z {
+.ad-u5sl4af {
   font-weight: bold;
-}/*# sourceMappingURL=main.css.map */
+}
